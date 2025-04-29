@@ -9,5 +9,6 @@ public class FishItem : MonoBehaviour
     public Rarity rarity = Rarity.Common;
     public bool edible = true;
     public bool canBeOffered = true;
+    public Sprite fishSprite;
 }
 

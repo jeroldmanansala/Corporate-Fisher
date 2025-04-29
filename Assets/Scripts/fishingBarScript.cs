@@ -167,7 +167,7 @@ public class fishingBarScript : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Space))
         {
-            rb.linearVelocity = Vector3.up * 6f; 
+            rb.linearVelocity = Vector3.up * 4f; 
         }
         // Clamp the bar's vertical position so it doesn't go past the top/bottom
         Vector3 pos = transform.localPosition;

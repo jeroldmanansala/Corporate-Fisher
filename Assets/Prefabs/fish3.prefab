@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da5d8371fc9840e48717a45838ce136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: Fish3
+  fishName: Tuna
   hungerRestore: 25
   rarity: 0
   edible: 1

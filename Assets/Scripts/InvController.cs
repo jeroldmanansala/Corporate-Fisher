@@ -93,6 +93,7 @@ public void SelectItem(GameObject item)
     if (fish != null)
     {
         itemNameText.text = fish.fishName;
+
         eatButton.SetActive(true);
 
         // Highlight the slot the item is in

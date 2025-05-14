@@ -10,5 +10,6 @@ public class FishItem : MonoBehaviour
     public bool edible = true;
     public bool canBeOffered = true;
     public Sprite fishSprite;
+    public int xpValue = 25;
 }
 

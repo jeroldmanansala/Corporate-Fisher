@@ -115,11 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da5d8371fc9840e48717a45838ce136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: Fish1
+  fishName: GUPPY
   hungerRestore: 25
   rarity: 0
   edible: 1
   canBeOffered: 1
+  fishSprite: {fileID: 6937817954938267909, guid: 6d2c8f746e9544b3c87c02c63253fcb3, type: 3}
+  xpValue: 25
 --- !u!114 &2403862144136077176
 MonoBehaviour:
   m_ObjectHideFlags: 0

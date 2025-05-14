@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     bool isFacingRight = true;
     public float jumpPower = 5f;
     bool isGrounded = false;
+    private PlayerScript playerScript;
 
     Rigidbody2D rb;
     Animator animator;
@@ -19,10 +20,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerScript = FindObjectOfType<PlayerScript>();
+
     }
 
     void Update()
     {
+        if (playerScript != null && playerScript.lockMovement)
+            return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         FlipSprite();

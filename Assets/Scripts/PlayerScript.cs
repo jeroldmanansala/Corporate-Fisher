@@ -24,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     private InvController invController;   
     public Bobber bobberScript;  
 
+    public bool lockMovement = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,6 +70,7 @@ public class PlayerScript : MonoBehaviour
             poleBack = false;
             isFishing = true;
             throwBobber = true;
+
             if(targetTime >= 3)
             {
                 extraBobberDistance += 3;
@@ -91,6 +94,7 @@ public class PlayerScript : MonoBehaviour
         {
             if(throwBobber == true)
             {
+                lockMovement = true;
                 Instantiate(bobber, fishingPoint.position, fishingPoint.rotation, transform);
                 fishingPoint.transform.position -= temp;
                 throwBobber = false;
@@ -109,6 +113,7 @@ public class PlayerScript : MonoBehaviour
             throwBobber = false;
             isFishing = false;
             timeTillCatch = 0;
+            lockMovement = false;
         }
     }
 
@@ -121,6 +126,7 @@ public class PlayerScript : MonoBehaviour
         poleBack = false;
         throwBobber = false;
         isFishing = false;
+        lockMovement = false;
         timeTillCatch = 0;
 
         GameObject caughtFish = invController.GetRandomFish();  
@@ -143,6 +149,7 @@ public class PlayerScript : MonoBehaviour
         poleBack = false;
         throwBobber = false;
         isFishing = false;
+        lockMovement = false;        
         timeTillCatch = 0;
     }
 
@@ -153,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         throwBobber = false;
         isFishing = false;
         timeTillCatch = 0;
+        lockMovement = false;
 
         // Destroy the bobber if it exists
         Bobber bobberScript = FindObjectOfType<Bobber>();

@@ -10,8 +10,10 @@ public class InvController : MonoBehaviour
     public GameObject[] itemPrefabs;
 
     public TextMeshProUGUI itemNameText;
+    public TextMeshProUGUI itemRarityText;
     public GameObject eatButton;
     public Image selectedHighlight;
+    public Image fishSpriteBackground;
 
     private GameObject selectedItem;
 
@@ -65,6 +67,7 @@ public class InvController : MonoBehaviour
             if (slot != null) slot.currentItem = null;
 
             Destroy(selectedItem);
+        
             Deselect();
         }
     }
@@ -83,6 +86,9 @@ public void Deselect()
 
     if (eatButton != null)
         eatButton.SetActive(false);
+
+    if (fishSpriteBackground != null)
+        fishSpriteBackground.gameObject.SetActive(false);
 }
 
 public void SelectItem(GameObject item)
@@ -93,6 +99,9 @@ public void SelectItem(GameObject item)
     if (fish != null)
     {
         itemNameText.text = fish.fishName;
+        fishSpriteBackground.gameObject.SetActive(true);
+        fishSpriteBackground.sprite = fish.fishSprite;
+        
 
         eatButton.SetActive(true);
 

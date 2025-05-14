@@ -9,6 +9,10 @@ public class ShrineOfferingManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerStats playerStats;
 
+    public int currentXP = 0;
+    public int xpToNext = 100;
+    public int essence = 0;
+
     public bool OfferItems()
     {
         if (AreSlotsFull())
@@ -66,7 +70,7 @@ public class ShrineOfferingManager : MonoBehaviour
         else
         {
             Debug.Log("All blessings received!");
-            // TODO: unlock portal, visual effects, etc
+            // TODO: unlock portal, visuals
         }
     }
 }

@@ -115,11 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da5d8371fc9840e48717a45838ce136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: Triggerfish
+  fishName: TRIGGERFISH
   hungerRestore: 25
   rarity: 0
   edible: 1
   canBeOffered: 1
+  fishSprite: {fileID: 7028616704906629411, guid: 7b011e91ae2c44db0815f9ec61510bdc, type: 3}
+  xpValue: 25
 --- !u!114 &-3277871604494719142
 MonoBehaviour:
   m_ObjectHideFlags: 0

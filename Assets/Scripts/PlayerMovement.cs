@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+    private float speedMultiplier = 1f;
+   
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed * speedMultiplier, rb.linearVelocity.y);
 
         animator.SetFloat("XVelocity", Mathf.Abs(rb.linearVelocity.x));
         animator.SetFloat("YVelocity", rb.linearVelocity.y);
@@ -63,5 +66,9 @@ public class PlayerMovement : MonoBehaviour
             scale.x *= -1;
             transform.localScale = scale;
         }
+    }
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 }

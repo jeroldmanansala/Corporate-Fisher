@@ -8,14 +8,16 @@ public class PlayerStats : MonoBehaviour
     public float maxHunger = 100f;
     public float hungerDrainRate = 100f; // hunger per second
 
-    public bool isDead = false;
+    public bool hungerZero = false;
 
     private float hungerLogTimer = 0f; // used to throttle debug messages
     private float logInterval = 1f; // how often to log hunger
     public Slider hungerBar;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
+        playerMovement = GetComponent<PlayerMovement>();
         if (hungerBar != null)
         {
             hungerBar.maxValue = maxHunger;
@@ -26,7 +28,6 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
 
         hunger -= hungerDrainRate * Time.deltaTime;
         hunger = Mathf.Clamp(hunger, 0, maxHunger);
@@ -44,9 +45,13 @@ public class PlayerStats : MonoBehaviour
         }
 
 
-        if (hunger <= 0)
+        if (hunger <= 0 && !hungerZero)
         {
-            DieOfHunger();
+            HungerDebuff();
+        }
+        else if (hunger > 0 && hungerZero)
+        {
+            RemoveDebuff();
         }
     }
 
@@ -54,14 +59,26 @@ public class PlayerStats : MonoBehaviour
     {
         hunger += amount;
         hunger = Mathf.Clamp(hunger, 0, maxHunger);
-        Debug.Log("🍽️ Ate food. Hunger is now: " + hunger);
+        Debug.Log("Ate food. Hunger is now: " + hunger);
     }
 
-    void DieOfHunger()
+    void HungerDebuff()
     {
-        isDead = true;
-        Debug.Log("💀 You died of hunger.");
-        // Future: Play animation, show game over screen, etc.
+        hungerZero = true;
+        Debug.Log("You're hungry! Movement slowed.");
+        if (playerMovement != null)
+        {
+            playerMovement.SetSpeedMultiplier(0.3f); // Example: 30% speed
+        }
+    }
+
+    void RemoveDebuff()
+    {
+        hungerZero = false;
+        Debug.Log("Hunger recovered. Speed restored.");
+        if (playerMovement != null)
+        {
+            playerMovement.SetSpeedMultiplier(1f); // Normal speed
+        }
     }
 }
-
